@@ -1,0 +1,230 @@
+====================================
+Total states visited: 10041
+Coverage of the state-space: 7.25%
+Dispersion of the visits to the state-space: 0.693
+====================================
+0 frequent states found (min. support: 15000):
+====================================
+77 infrequent states found (max. support: 150):
+	186-['L: empty', 'R: out-bounds', 'U: water', 'D: empty'] (count: 1)
+	403-['L: water', 'R: out-bounds', 'U: water', 'D: water'] (count: 1)
+	405-['L: water', 'R: out-bounds', 'U: water', 'D: log'] (count: 1)
+	711-['L: log', 'R: water', 'U: lilypad', 'D: log'] (count: 1)
+	715-['L: log', 'R: water', 'U: out-bounds', 'D: water'] (count: 1)
+	787-['L: log', 'R: log', 'U: out-bounds', 'D: water'] (count: 1)
+	846-['L: log', 'R: out-bounds', 'U: log', 'D: empty'] (count: 1)
+	1036-['L: lilypad', 'R: lilypad', 'U: lilypad', 'D: lilypad'] (count: 1)
+	1213-['L: out-bounds', 'R: log', 'U: lilypad', 'D: water'] (count: 1)
+	1215-['L: out-bounds', 'R: log', 'U: lilypad', 'D: log'] (count: 1)
+	197-['L: empty', 'R: out-bounds', 'U: car', 'D: out-bounds'] (count: 2)
+	349-['L: water', 'R: log', 'U: lilypad', 'D: water'] (count: 2)
+	402-['L: water', 'R: out-bounds', 'U: water', 'D: empty'] (count: 2)
+	415-['L: water', 'R: out-bounds', 'U: log', 'D: water'] (count: 2)
+	717-['L: log', 'R: water', 'U: out-bounds', 'D: log'] (count: 2)
+	835-['L: log', 'R: out-bounds', 'U: water', 'D: water'] (count: 2)
+	837-['L: log', 'R: out-bounds', 'U: water', 'D: log'] (count: 2)
+	847-['L: log', 'R: out-bounds', 'U: log', 'D: water'] (count: 2)
+	1135-['L: out-bounds', 'R: water', 'U: log', 'D: water'] (count: 2)
+	1137-['L: out-bounds', 'R: water', 'U: log', 'D: log'] (count: 2)
+	1197-['L: out-bounds', 'R: log', 'U: water', 'D: log'] (count: 2)
+	200-['L: empty', 'R: out-bounds', 'U: log', 'D: car'] (count: 3)
+	849-['L: log', 'R: out-bounds', 'U: log', 'D: log'] (count: 3)
+	859-['L: log', 'R: out-bounds', 'U: out-bounds', 'D: water'] (count: 3)
+	1164-['L: out-bounds', 'R: car', 'U: car', 'D: empty'] (count: 3)
+	1221-['L: out-bounds', 'R: log', 'U: out-bounds', 'D: log'] (count: 3)
+	414-['L: water', 'R: out-bounds', 'U: log', 'D: empty'] (count: 4)
+	612-['L: car', 'R: out-bounds', 'U: empty', 'D: empty'] (count: 4)
+	624-['L: car', 'R: out-bounds', 'U: car', 'D: empty'] (count: 4)
+	1088-['L: out-bounds', 'R: empty', 'U: water', 'D: car'] (count: 4)
+	198-['L: empty', 'R: out-bounds', 'U: log', 'D: empty'] (count: 5)
+	357-['L: water', 'R: log', 'U: out-bounds', 'D: log'] (count: 5)
+	691-['L: log', 'R: water', 'U: water', 'D: water'] (count: 5)
+	1195-['L: out-bounds', 'R: log', 'U: water', 'D: water'] (count: 6)
+	1209-['L: out-bounds', 'R: log', 'U: log', 'D: log'] (count: 6)
+	182-['L: empty', 'R: out-bounds', 'U: empty', 'D: car'] (count: 7)
+	1134-['L: out-bounds', 'R: water', 'U: log', 'D: empty'] (count: 7)
+	194-['L: empty', 'R: out-bounds', 'U: car', 'D: car'] (count: 8)
+	614-['L: car', 'R: out-bounds', 'U: empty', 'D: car'] (count: 8)
+	331-['L: water', 'R: log', 'U: water', 'D: water'] (count: 10)
+	834-['L: log', 'R: out-bounds', 'U: water', 'D: empty'] (count: 10)
+	1154-['L: out-bounds', 'R: car', 'U: empty', 'D: car'] (count: 12)
+	343-['L: water', 'R: log', 'U: log', 'D: water'] (count: 14)
+	703-['L: log', 'R: water', 'U: log', 'D: water'] (count: 14)
+	763-['L: log', 'R: log', 'U: water', 'D: water'] (count: 14)
+	1207-['L: out-bounds', 'R: log', 'U: log', 'D: water'] (count: 14)
+	446-['L: car', 'R: empty', 'U: car', 'D: car'] (count: 16)
+	775-['L: log', 'R: log', 'U: log', 'D: water'] (count: 16)
+	1094-['L: out-bounds', 'R: empty', 'U: car', 'D: car'] (count: 16)
+	192-['L: empty', 'R: out-bounds', 'U: car', 'D: empty'] (count: 17)
+	1100-['L: out-bounds', 'R: empty', 'U: log', 'D: car'] (count: 20)
+	86-['L: empty', 'R: car', 'U: car', 'D: car'] (count: 22)
+	185-['L: empty', 'R: out-bounds', 'U: empty', 'D: out-bounds'] (count: 23)
+	705-['L: log', 'R: water', 'U: log', 'D: log'] (count: 26)
+	1097-['L: out-bounds', 'R: empty', 'U: car', 'D: out-bounds'] (count: 26)
+	1122-['L: out-bounds', 'R: water', 'U: water', 'D: empty'] (count: 27)
+	777-['L: log', 'R: log', 'U: log', 'D: log'] (count: 29)
+	765-['L: log', 'R: log', 'U: water', 'D: log'] (count: 31)
+	693-['L: log', 'R: water', 'U: water', 'D: log'] (count: 32)
+	1152-['L: out-bounds', 'R: car', 'U: empty', 'D: empty'] (count: 32)
+	1206-['L: out-bounds', 'R: log', 'U: log', 'D: empty'] (count: 33)
+	333-['L: water', 'R: log', 'U: water', 'D: log'] (count: 37)
+	74-['L: empty', 'R: car', 'U: empty', 'D: car'] (count: 41)
+	434-['L: car', 'R: empty', 'U: empty', 'D: car'] (count: 42)
+	345-['L: water', 'R: log', 'U: log', 'D: log'] (count: 43)
+	180-['L: empty', 'R: out-bounds', 'U: empty', 'D: empty'] (count: 60)
+	1082-['L: out-bounds', 'R: empty', 'U: empty', 'D: car'] (count: 66)
+	1092-['L: out-bounds', 'R: empty', 'U: car', 'D: empty'] (count: 67)
+	1085-['L: out-bounds', 'R: empty', 'U: empty', 'D: out-bounds'] (count: 77)
+	1194-['L: out-bounds', 'R: log', 'U: water', 'D: empty'] (count: 80)
+	1098-['L: out-bounds', 'R: empty', 'U: log', 'D: empty'] (count: 84)
+	84-['L: empty', 'R: car', 'U: car', 'D: empty'] (count: 86)
+	1086-['L: out-bounds', 'R: empty', 'U: water', 'D: empty'] (count: 97)
+	702-['L: log', 'R: water', 'U: log', 'D: empty'] (count: 102)
+	342-['L: water', 'R: log', 'U: log', 'D: empty'] (count: 106)
+	774-['L: log', 'R: log', 'U: log', 'D: empty'] (count: 106)
+	14-['L: empty', 'R: empty', 'U: car', 'D: car'] (count: 117)
+====================================
+0 frequent feature-sets found (min. support: 15000, min. assoc. strength: 0.4):
+====================================
+0 interesting feature-rules found (min. confidence: 0.8):
+====================================
+139 infrequent feature-sets found (max. assoc. strength: 0.0001):
+	['down: water', 'right: lilypad']
+	['down: log', 'right: lilypad']
+	['up: out-bounds', 'right: lilypad']
+	['left: car', 'right: lilypad']
+	['down: out-bounds', 'up: lilypad']
+	['down: out-bounds', 'left: water']
+	['down: car', 'right: lilypad']
+	['up: log', 'right: lilypad']
+	['left: log', 'right: lilypad']
+	['left: water', 'down: lilypad']
+	['down: out-bounds', 'right: log']
+	['right: empty', 'left: water']
+	['down: out-bounds', 'left: lilypad']
+	['right: empty', 'up: out-bounds']
+	['down: out-bounds', 'right: water']
+	['left: water', 'right: lilypad']
+	['down: empty', 'up: out-bounds']
+	['left: out-bounds', 'down: lilypad']
+	['up: empty', 'down: log']
+	['up: car', 'down: log']
+	['right: empty', 'left: lilypad']
+	['right: empty', 'down: log']
+	['up: water', 'right: lilypad']
+	['down: out-bounds', 'right: lilypad']
+	['down: out-bounds', 'left: log']
+	['left: empty', 'up: out-bounds']
+	['right: empty', 'up: lilypad']
+	['up: water', 'left: lilypad']
+	['right: water', 'left: lilypad']
+	['left: out-bounds', 'right: lilypad']
+	['up: water', 'down: lilypad']
+	['up: empty', 'right: lilypad']
+	['right: car', 'left: lilypad']
+	['right: car', 'down: lilypad']
+	['left: empty', 'down: log']
+	['left: empty', 'right: water']
+	['up: empty', 'left: lilypad']
+	['up: car', 'left: lilypad']
+	['right: out-bounds', 'left: lilypad']
+	['up: empty', 'down: lilypad']
+	['right: out-bounds', 'down: lilypad']
+	['up: car', 'down: lilypad']
+	['right: empty', 'down: lilypad']
+	['left: empty', 'up: lilypad']
+	['left: car', 'up: lilypad']
+	['up: empty', 'down: water']
+	['down: empty', 'left: lilypad']
+	['up: car', 'down: water']
+	['right: log', 'left: lilypad']
+	['right: empty', 'down: water']
+	['right: log', 'down: lilypad']
+	['left: empty', 'right: log']
+	['left: empty', 'right: lilypad']
+	['down: water', 'left: lilypad']
+	['right: water', 'down: lilypad']
+	['down: log', 'left: lilypad']
+	['down: empty', 'up: lilypad']
+	['up: out-bounds', 'left: lilypad']
+	['up: car', 'right: lilypad']
+	['up: out-bounds', 'down: lilypad']
+	['right: empty', 'left: log']
+	['left: empty', 'down: lilypad']
+	['left: car', 'down: lilypad']
+	['down: car', 'left: lilypad']
+	['up: log', 'left: lilypad']
+	['down: empty', 'right: lilypad']
+	['up: log', 'down: lilypad']
+	['left: empty', 'down: water']
+	['left: log', 'down: lilypad']
+	['down: empty', 'up: car', 'left: water']
+	['left: out-bounds', 'right: out-bounds', 'down: log']
+	['down: empty', 'up: car', 'right: log']
+	['left: out-bounds', 'right: car', 'up: lilypad']
+	['left: out-bounds', 'right: car', 'down: water']
+	['up: water', 'down: car', 'left: water']
+	['down: empty', 'up: car', 'right: water']
+	['down: empty', 'up: empty', 'left: water']
+	['left: out-bounds', 'down: car', 'right: out-bounds']
+	['down: empty', 'left: log', 'right: car']
+	['down: empty', 'up: empty', 'right: log']
+	['left: out-bounds', 'down: car', 'up: lilypad']
+	['down: empty', 'up: empty', 'right: water']
+	['left: out-bounds', 'right: out-bounds', 'up: lilypad']
+	['right: out-bounds', 'left: car', 'down: water']
+	['down: empty', 'left: car', 'right: water']
+	['down: empty', 'left: water', 'right: car']
+	['left: out-bounds', 'right: water', 'up: out-bounds']
+	['down: empty', 'up: car', 'left: log']
+	['left: out-bounds', 'right: out-bounds', 'down: water']
+	['right: out-bounds', 'left: car', 'up: out-bounds']
+	['down: empty', 'right: log', 'left: car']
+	['right: log', 'left: log', 'up: lilypad']
+	['left: out-bounds', 'right: car', 'down: log']
+	['left: out-bounds', 'right: water', 'up: lilypad']
+	['right: out-bounds', 'left: car', 'down: log']
+	['left: out-bounds', 'up: log', 'right: out-bounds']
+	['up: water', 'down: car', 'left: log']
+	['left: out-bounds', 'up: out-bounds', 'right: car']
+	['right: out-bounds', 'up: out-bounds', 'left: water']
+	['down: empty', 'up: empty', 'left: log']
+	['left: log', 'right: out-bounds', 'up: lilypad']
+	['left: out-bounds', 'down: car', 'up: out-bounds']
+	['right: empty', 'down: empty', 'up: log', 'left: car']
+	['down: empty', 'up: water', 'right: water', 'left: water']
+	['up: log', 'right: out-bounds', 'left: water', 'down: log']
+	['right: empty', 'down: empty', 'up: water', 'left: car']
+	['left: empty', 'down: empty', 'up: water', 'right: car']
+	['right: log', 'left: log', 'up: out-bounds', 'down: log']
+	['down: empty', 'up: empty', 'left: out-bounds', 'right: out-bounds']
+	['right: empty', 'left: empty', 'down: out-bounds', 'up: log']
+	['up: car', 'down: car', 'left: car', 'right: car']
+	['left: out-bounds', 'down: car', 'up: log', 'right: car']
+	['up: water', 'left: out-bounds', 'right: water', 'down: water']
+	['down: empty', 'up: car', 'left: out-bounds', 'right: out-bounds']
+	['up: car', 'down: car', 'right: out-bounds', 'left: car']
+	['left: log', 'right: out-bounds', 'up: out-bounds', 'down: log']
+	['right: log', 'up: out-bounds', 'left: water', 'down: water']
+	['right: log', 'left: water', 'down: log', 'up: lilypad']
+	['right: empty', 'left: empty', 'down: out-bounds', 'up: water']
+	['left: empty', 'down: car', 'up: log', 'right: car']
+	['up: empty', 'down: out-bounds', 'left: out-bounds', 'right: out-bounds']
+	['right: empty', 'up: empty', 'down: out-bounds', 'left: car']
+	['left: empty', 'down: empty', 'up: log', 'right: car']
+	['down: empty', 'up: empty', 'left: car', 'right: car']
+	['down: empty', 'left: out-bounds', 'up: log', 'right: car']
+	['down: out-bounds', 'up: car', 'left: out-bounds', 'right: out-bounds']
+	['up: empty', 'down: car', 'left: car', 'right: car']
+	['up: car', 'left: out-bounds', 'down: car', 'right: car']
+	['down: empty', 'up: log', 'right: water', 'left: water']
+	['up: water', 'left: out-bounds', 'down: car', 'right: log']
+	['right: empty', 'down: car', 'up: log', 'left: car']
+	['down: empty', 'up: car', 'left: car', 'right: car']
+	['down: empty', 'up: water', 'left: out-bounds', 'right: out-bounds']
+	['left: empty', 'up: empty', 'down: out-bounds', 'right: car']
+	['up: water', 'left: out-bounds', 'down: car', 'right: water']
+	['left: out-bounds', 'right: log', 'up: out-bounds', 'down: water']
+	['left: empty', 'up: water', 'down: car', 'right: out-bounds']
+	['up: water', 'left: out-bounds', 'right: water', 'down: log']
+	['left: log', 'right: water', 'down: water', 'up: lilypad']

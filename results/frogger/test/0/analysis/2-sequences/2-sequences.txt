@@ -1,0 +1,175 @@
+====================================
+30 certain sequences to sub-goals found (min. prob > 0):
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 2.482e-05)
+		left -> 5-['U: empty']
+		up -> 0-['D: empty']
+		up -> 6-['U: water']
+		left -> 1098-['L: out-bounds', 'U: log']
+		up -> 1122-['R: water', 'U: water']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 4.731e-06)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 20-['L: empty', 'U: log', 'D: car']
+		up -> 774-['L: log', 'R: log', 'D: empty']
+		up -> 705-['R: water', 'D: log']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 1.735e-06)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 20-['L: empty', 'U: log', 'D: car']
+		up -> 342-['L: water', 'R: log', 'D: empty']
+		up -> 775-['L: log', 'D: water']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 5.914e-06)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 20-['L: empty', 'U: log', 'D: car']
+		up -> 774-['L: log', 'R: log', 'D: empty']
+		up -> 777-['D: log']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 1.598e-05)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 20-['L: empty', 'U: log', 'D: car']
+		up -> 702-['L: log', 'R: water', 'D: empty']
+		up -> 333-['L: water', 'R: log', 'U: water', 'D: log']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 8.522e-06)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 20-['L: empty', 'U: log', 'D: car']
+		up -> 702-['L: log', 'R: water', 'D: empty']
+		up -> 693-['U: water', 'D: log']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 9.463e-06)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 20-['L: empty', 'U: log', 'D: car']
+		up -> 774-['L: log', 'R: log', 'D: empty']
+		left -> 1206-['L: out-bounds']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 2.602e-06)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 20-['L: empty', 'U: log', 'D: car']
+		up -> 342-['L: water', 'R: log', 'D: empty']
+		up -> 343-['D: water']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 1.183e-05)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 20-['L: empty', 'U: log', 'D: car']
+		up -> 774-['L: log', 'R: log', 'D: empty']
+		up -> 345-['L: water', 'D: log']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 7.457e-06)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 20-['L: empty', 'U: log', 'D: car']
+		up -> 702-['L: log', 'R: water', 'D: empty']
+		up -> 765-['R: log', 'U: water', 'D: log']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 6.169e-05)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 18-['U: log']
+		up -> 342-['L: water', 'R: log']
+		up -> 705-['L: log', 'R: water', 'D: log']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 6.235e-04)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 6-['U: water']
+		left -> 1098-['L: out-bounds', 'U: log']
+		up -> 1122-['R: water', 'U: water']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 6.930e-05)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 12-['U: car']
+		left -> 1092-['L: out-bounds']
+		left -> 1094-['D: car']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 4.113e-05)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 18-['U: log']
+		up -> 342-['L: water', 'R: log']
+		up -> 775-['L: log', 'D: water']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 6.748e-05)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 18-['U: log']
+		up -> 774-['L: log', 'R: log']
+		up -> 777-['D: log']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 3.465e-05)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 12-['U: car']
+		left -> 1092-['L: out-bounds']
+		down -> 1097-['D: out-bounds']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 8.440e-05)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 6-['U: water']
+		left -> 20-['U: log', 'D: car']
+		left -> 1100-['L: out-bounds']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 2.605e-04)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 18-['U: log']
+		up -> 702-['L: log', 'R: water']
+		up -> 333-['L: water', 'R: log', 'U: water', 'D: log']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 1.389e-04)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 18-['U: log']
+		up -> 702-['L: log', 'R: water']
+		up -> 693-['U: water', 'D: log']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 1.496e-04)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 6-['U: water']
+		left -> 1098-['L: out-bounds', 'U: log']
+		up -> 1206-['R: log']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 6.169e-05)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 18-['U: log']
+		up -> 342-['L: water', 'R: log']
+		up -> 343-['D: water']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 1.389e-04)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 18-['U: log']
+		up -> 702-['L: log', 'R: water']
+		up -> 345-['L: water', 'R: log', 'D: log']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 1.215e-04)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 18-['U: log']
+		up -> 702-['L: log', 'R: water']
+		up -> 765-['R: log', 'U: water', 'D: log']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 5.668e-05)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 74-['L: empty', 'R: car', 'D: car']
+		left -> 1154-['L: out-bounds']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 7.093e-05)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 14-['L: empty', 'U: car', 'D: car']
+		left -> 1094-['L: out-bounds']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 5.015e-05)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 20-['L: empty', 'U: log', 'D: car']
+		left -> 1100-['L: out-bounds']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 1.031e-04)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		left -> 1080-['L: out-bounds']
+		down -> 1154-['R: car', 'D: car']
+____________________________________
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (count: 400, prob. reaching target: 2.659e-04)
+		up -> 0-['L: empty', 'R: empty', 'U: empty', 'D: empty']
+		up -> 72-['R: car']
+		up -> 446-['L: car', 'R: empty', 'U: car', 'D: car']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 3.320e-04)
+		up -> 432-['L: car', 'U: empty', 'D: empty']
+		up -> 446-['U: car', 'D: car']
+____________________________________
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, prob. reaching target: 1.131e-02)
+		left -> 1097-['L: out-bounds']
+____________________________________
+====================================
+0 states with an uncertain future found:

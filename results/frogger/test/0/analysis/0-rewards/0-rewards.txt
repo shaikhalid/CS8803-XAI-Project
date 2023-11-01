@@ -1,0 +1,27 @@
+====================================
+Average overall reward: -37.457 ± 75.009 (count: 138)
+====================================
+10 state-action outliers found (outlier threshold: 2.5):
+	6-['left: empty', 'right: empty', 'up: water', 'down: empty'] - up (mean reward: -226.000, count: 12)
+	84-['left: empty', 'right: car', 'up: car', 'down: empty'] - up (mean reward: -226.926, count: 27)
+	446-['left: car', 'right: empty', 'up: car', 'down: car'] - down (mean reward: -229.571, count: 7)
+	72-['left: empty', 'right: car', 'up: empty', 'down: empty'] - right (mean reward: -232.579, count: 19)
+	444-['left: car', 'right: empty', 'up: car', 'down: empty'] - left (mean reward: -237.842, count: 38)
+	1194-['left: out-bounds', 'right: log', 'up: water', 'down: empty'] - up (mean reward: -238.500, count: 8)
+	8-['left: empty', 'right: empty', 'up: water', 'down: car'] - up (mean reward: -239.462, count: 26)
+	444-['left: car', 'right: empty', 'up: car', 'down: empty'] - up (mean reward: -258.692, count: 26)
+	333-['left: water', 'right: log', 'up: water', 'down: log'] - left (mean reward: -267.667, count: 9)
+	765-['left: log', 'right: log', 'up: water', 'down: log'] - up (mean reward: -267.667, count: 9)
+====================================
+Actions' average rewards:
+	left: -35.567 ± 70.035 (count: 39)
+	right: -13.272 ± 47.247 (count: 32)
+	up: -75.624 ± 101.598 (count: 33)
+	down: -25.343 ± 54.545 (count: 34)
+====================================
+5 feature-action outliers found (outlier threshold: 2.5):
+	left: car - left (avg. reward: -189.421 ± 48.421, count: 2)
+	right: car - right (avg. reward: -191.789 ± 40.789, count: 2)
+	left: water - left (avg. reward: -213.963 ± 41.159, count: 3)
+	up: car - up (avg. reward: -218.730 ± 25.351, count: 5)
+	up: water - up (avg. reward: -234.526 ± 21.611, count: 5)

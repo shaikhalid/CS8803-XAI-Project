@@ -1,0 +1,34 @@
+Min. state-action support: 7
+====================================
+4 certain state transitions found (max. dispersion: 0.03):
+	(6-['L: empty', 'R: empty', 'U: water', 'D: empty'], up) (supp: 12, disp: 0.000)
+	(690-['L: log', 'R: water', 'U: water', 'D: empty'], up) (supp: 11, disp: 0.000)
+	(765-['L: log', 'R: log', 'U: water', 'D: log'], up) (supp: 9, disp: 0.000)
+	(1194-['L: out-bounds', 'R: log', 'U: water', 'D: empty'], up) (supp: 8, disp: 0.000)
+====================================
+8 uncertain state transitions found (min. dispersion: 0.9):
+	(434-['L: car', 'R: empty', 'U: empty', 'D: car'], up) (supp: 9, disp: 0.971)
+	(342-['L: water', 'R: log', 'U: log', 'D: empty'], up) (supp: 41, disp: 0.963)
+	(705-['L: log', 'R: water', 'U: log', 'D: log'], left) (supp: 11, disp: 0.949)
+	(774-['L: log', 'R: log', 'U: log', 'D: empty'], up) (supp: 39, disp: 0.925)
+	(345-['L: water', 'R: log', 'U: log', 'D: log'], up) (supp: 11, disp: 0.924)
+	(1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'], up) (supp: 169, disp: 0.922)
+	(765-['L: log', 'R: log', 'U: water', 'D: log'], down) (supp: 10, disp: 0.917)
+	(18-['L: empty', 'R: empty', 'U: log', 'D: empty'], left) (supp: 18, disp: 0.901)
+====================================
+0 certain actions found (max. dispersion: 0.03):
+====================================
+0 uncertain actions found (min. dispersion: 0.9):
+====================================
+1 certain state feature-action pairs found (max disp: 0.03):
+	down: water - down (disp: 0.000)
+====================================
+8 uncertain state feature-action pairs found (min. disp: 0.9):
+	down: water - left (disp: 1.000)
+	up: out-bounds - down (disp: 1.000)
+	up: out-bounds - left (disp: 0.990)
+	down: water - up (disp: 0.976)
+	up: out-bounds - right (disp: 0.961)
+	down: water - right (disp: 0.949)
+	left: water - up (disp: 0.927)
+	up: out-bounds - up (disp: 0.922)

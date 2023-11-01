@@ -1,0 +1,28 @@
+====================================
+Average overall value: 3444.439 ± 1084.241 (count: 138)
+====================================
+0 state-action value outliers found (min. support: 7, outlier threshold: 2):
+====================================
+Average overall prediction error: 161.918 ± 152.411 (count: 138)
+====================================
+5 state-action prediction error outliers found (min. support: 7, outlier threshold: 2.0):
+	1194-['L: out-bounds', 'R: log', 'U: water', 'D: empty'] - up (avg. prediction error: 975.651, count: 8)
+	690-['L: log', 'R: water', 'U: water', 'D: empty'] - up (avg. prediction error: 838.433, count: 11)
+	20-['L: empty', 'R: empty', 'U: log', 'D: car'] - down (avg. prediction error: 670.358, count: 25)
+	8-['L: empty', 'R: empty', 'U: water', 'D: car'] - down (avg. prediction error: 643.211, count: 9)
+	434-['L: car', 'R: empty', 'U: empty', 'D: car'] - up (avg. prediction error: 495.301, count: 9)
+====================================
+Actions' average values:
+	left: 3579.255 ± 1074.369
+	right: 3321.623 ± 1101.608
+	up: 3442.250 ± 1017.888
+	down: 3407.516 ± 1123.949
+====================================
+1 feature value outliers found (outlier threshold: 2):
+	up: out-bounds (avg. value: 1967.491 ± 0.000)
+====================================
+4 feature pred. error outliers found (outlier threshold: 2):
+	up: water - up (avg. pred. error: 512.225 ± 354.514)
+	right: water - up (avg. pred. error: 460.896 ± 377.537)
+	up: log - down (avg. pred. error: 361.345 ± 156.865)
+	down: car - down (avg. pred. error: 348.001 ± 265.680)

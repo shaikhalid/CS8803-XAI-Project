@@ -1,0 +1,59 @@
+====================================
+1 local minima states found (min. transition support: 7):
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, value: 1871.790 <= avg next values: 2067.966)
+====================================
+1 absolute minima states found (min. transition support: 7):
+	17-['L: empty', 'R: empty', 'U: car', 'D: out-bounds'] (count: 619, value: 1871.790 <= avg next values: 2067.966)
+====================================
+15 local maxima states found (min. transition support: 7):
+	333-['L: water', 'R: log', 'U: water', 'D: log'] (count: 37, value: 5000.000 >= avg next values: 4262.344)
+	343-['L: water', 'R: log', 'U: log', 'D: water'] (count: 14, value: 5000.000 >= avg next values: 4158.096)
+	345-['L: water', 'R: log', 'U: log', 'D: log'] (count: 43, value: 5000.000 >= avg next values: 4014.091)
+	446-['L: car', 'R: empty', 'U: car', 'D: car'] (count: 16, value: 5000.000 >= avg next values: 2809.505)
+	693-['L: log', 'R: water', 'U: water', 'D: log'] (count: 32, value: 5000.000 >= avg next values: 4474.413)
+	705-['L: log', 'R: water', 'U: log', 'D: log'] (count: 26, value: 5000.000 >= avg next values: 4361.290)
+	765-['L: log', 'R: log', 'U: water', 'D: log'] (count: 31, value: 5000.000 >= avg next values: 4068.542)
+	775-['L: log', 'R: log', 'U: log', 'D: water'] (count: 16, value: 5000.000 >= avg next values: 4806.440)
+	777-['L: log', 'R: log', 'U: log', 'D: log'] (count: 29, value: 5000.000 >= avg next values: 4930.032)
+	1100-['L: out-bounds', 'R: empty', 'U: log', 'D: car'] (count: 20, value: 5000.000 >= avg next values: 4201.084)
+	1122-['L: out-bounds', 'R: water', 'U: water', 'D: empty'] (count: 27, value: 5000.000 >= avg next values: 4181.409)
+	1154-['L: out-bounds', 'R: car', 'U: empty', 'D: car'] (count: 12, value: 5000.000 >= avg next values: 3936.804)
+	1206-['L: out-bounds', 'R: log', 'U: log', 'D: empty'] (count: 33, value: 5000.000 >= avg next values: 4570.226)
+	1094-['L: out-bounds', 'R: empty', 'U: car', 'D: car'] (count: 16, value: 4562.492 >= avg next values: 3498.010)
+	1097-['L: out-bounds', 'R: empty', 'U: car', 'D: out-bounds'] (count: 26, value: 4562.492 >= avg next values: 3797.165)
+====================================
+13 absolute maxima states found (min. transition support: 7):
+	333-['L: water', 'R: log', 'U: water', 'D: log'] (count: 37, value: 5000.000 >= avg next values: 4262.344)
+	343-['L: water', 'R: log', 'U: log', 'D: water'] (count: 14, value: 5000.000 >= avg next values: 4158.096)
+	345-['L: water', 'R: log', 'U: log', 'D: log'] (count: 43, value: 5000.000 >= avg next values: 4014.091)
+	446-['L: car', 'R: empty', 'U: car', 'D: car'] (count: 16, value: 5000.000 >= avg next values: 2809.505)
+	693-['L: log', 'R: water', 'U: water', 'D: log'] (count: 32, value: 5000.000 >= avg next values: 4474.413)
+	705-['L: log', 'R: water', 'U: log', 'D: log'] (count: 26, value: 5000.000 >= avg next values: 4361.290)
+	765-['L: log', 'R: log', 'U: water', 'D: log'] (count: 31, value: 5000.000 >= avg next values: 4068.542)
+	775-['L: log', 'R: log', 'U: log', 'D: water'] (count: 16, value: 5000.000 >= avg next values: 4806.440)
+	777-['L: log', 'R: log', 'U: log', 'D: log'] (count: 29, value: 5000.000 >= avg next values: 4930.032)
+	1100-['L: out-bounds', 'R: empty', 'U: log', 'D: car'] (count: 20, value: 5000.000 >= avg next values: 4201.084)
+	1122-['L: out-bounds', 'R: water', 'U: water', 'D: empty'] (count: 27, value: 5000.000 >= avg next values: 4181.409)
+	1154-['L: out-bounds', 'R: car', 'U: empty', 'D: car'] (count: 12, value: 5000.000 >= avg next values: 3936.804)
+	1206-['L: out-bounds', 'R: log', 'U: log', 'D: empty'] (count: 33, value: 5000.000 >= avg next values: 4570.226)
+====================================
+17 value difference mean state outliers found (min. transition support: 7, outlier stds: 2):
+	333-['L: water', 'R: log', 'U: water', 'D: log'] - up (trans. count: 302, mean value diff.: 2946.664)
+	343-['L: water', 'R: log', 'U: log', 'D: water'] - left (trans. count: 258, mean value diff.: 2946.664)
+	343-['L: water', 'R: log', 'U: log', 'D: water'] - down (trans. count: 1367, mean value diff.: 2946.664)
+	446-['L: car', 'R: empty', 'U: car', 'D: car'] - up (trans. count: 205, mean value diff.: 2946.664)
+	693-['L: log', 'R: water', 'U: water', 'D: log'] - right (trans. count: 233, mean value diff.: 2946.664)
+	693-['L: log', 'R: water', 'U: water', 'D: log'] - up (trans. count: 76, mean value diff.: 2946.664)
+	705-['L: log', 'R: water', 'U: log', 'D: log'] - right (trans. count: 36, mean value diff.: 2946.664)
+	765-['L: log', 'R: log', 'U: water', 'D: log'] - up (trans. count: 29, mean value diff.: 2946.664)
+	775-['L: log', 'R: log', 'U: log', 'D: water'] - down (trans. count: 204, mean value diff.: 2946.664)
+	1100-['L: out-bounds', 'R: empty', 'U: log', 'D: car'] - down (trans. count: 485, mean value diff.: 2946.664)
+	1122-['L: out-bounds', 'R: water', 'U: water', 'D: empty'] - right (trans. count: 66, mean value diff.: 2946.664)
+	1122-['L: out-bounds', 'R: water', 'U: water', 'D: empty'] - up (trans. count: 12, mean value diff.: 2946.664)
+	1154-['L: out-bounds', 'R: car', 'U: empty', 'D: car'] - down (trans. count: 18, mean value diff.: 2946.664)
+	1097-['L: out-bounds', 'R: empty', 'U: car', 'D: out-bounds'] - right (trans. count: 598, mean value diff.: 2690.701)
+	1194-['L: out-bounds', 'R: log', 'U: water', 'D: empty'] - up (trans. count: 99, mean value diff.: 2509.907)
+	1094-['L: out-bounds', 'R: empty', 'U: car', 'D: car'] - up (trans. count: 226, mean value diff.: 2509.156)
+	1097-['L: out-bounds', 'R: empty', 'U: car', 'D: out-bounds'] - up (trans. count: 197, mean value diff.: 2509.156)
+====================================
+0 value difference variance state-action outliers found (min. transition support: 7, outlier stds: 2):

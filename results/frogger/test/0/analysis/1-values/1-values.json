@@ -1,0 +1,145 @@
+{
+    "action_vals_avg": [
+        {
+            "py/tuple": [
+                0,
+                3579.254778800107,
+                1074.3692863984543
+            ]
+        },
+        {
+            "py/tuple": [
+                1,
+                3321.622773437747,
+                1101.6077390419546
+            ]
+        },
+        {
+            "py/tuple": [
+                2,
+                3442.2495788162155,
+                1017.8875919619015
+            ]
+        },
+        {
+            "py/tuple": [
+                3,
+                3407.515694303684,
+                1123.9488436869015
+            ]
+        }
+    ],
+    "agent": null,
+    "avg_pred_error": {
+        "py/tuple": [
+            161.91832512878392,
+            152.411293752254,
+            138
+        ]
+    },
+    "avg_value": {
+        "py/tuple": [
+            3444.439382829511,
+            1084.2409255912016,
+            138
+        ]
+    },
+    "config": null,
+    "feature_outlier_stds": 2,
+    "helper": null,
+    "mean_val_feature_outliers": [
+        {
+            "py/tuple": [
+                2,
+                5,
+                1967.491340555397,
+                0.0
+            ]
+        }
+    ],
+    "mean_val_state_action_outliers": [],
+    "min_state_count": 7,
+    "pred_error_feature_outliers": [
+        {
+            "py/tuple": [
+                2,
+                1,
+                2,
+                512.2251422438204,
+                354.51436249155495
+            ]
+        },
+        {
+            "py/tuple": [
+                1,
+                1,
+                2,
+                460.89612691663353,
+                377.5367409166337
+            ]
+        },
+        {
+            "py/tuple": [
+                2,
+                3,
+                3,
+                361.34507031985703,
+                156.86523112986896
+            ]
+        },
+        {
+            "py/tuple": [
+                3,
+                2,
+                3,
+                348.00098558931955,
+                265.6801432929063
+            ]
+        }
+    ],
+    "pred_error_outlier_stds": 2.0,
+    "pred_error_state_action_outliers": [
+        {
+            "py/tuple": [
+                1194,
+                2,
+                975.6506733412016,
+                8
+            ]
+        },
+        {
+            "py/tuple": [
+                690,
+                2,
+                838.4328678332672,
+                11
+            ]
+        },
+        {
+            "py/tuple": [
+                20,
+                3,
+                670.3575435003017,
+                25
+            ]
+        },
+        {
+            "py/tuple": [
+                8,
+                3,
+                643.2109647314468,
+                9
+            ]
+        },
+        {
+            "py/tuple": [
+                434,
+                2,
+                495.30077693629863,
+                9
+            ]
+        }
+    ],
+    "py/object": "interestingness_xrl.explainability.analysis.interaction.values.ValueAnalysis",
+    "state_value_outlier_stds": 2
+}

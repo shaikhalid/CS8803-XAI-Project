@@ -1,0 +1,44 @@
+====================================
+Action JS divergence threshold: 0.04 per action:
+====================================
+4 contradictory values states found):
+	18-['L: empty', 'R: empty', 'U: log', 'D: empty'] (jsd: 0.108, count: 241)
+		Divergent actions: ['up']
+		Rwd. dist:	[      -1.0       -1.0      -2.01*      -1.0 ]
+		Val. dist:	[  3490.651   3400.159   4116.269*  3293.968 ]
+	1295-['L: out-bounds', 'R: out-bounds', 'U: out-bounds', 'D: out-bounds'] (jsd: 0.098, count: 400)
+		Divergent actions: ['up']
+		Rwd. dist:	[      -1.0       -1.0    -82.657*      -1.0 ]
+		Val. dist:	[  1922.683   1987.657   2053.336*   1906.29 ]
+	774-['L: log', 'R: log', 'U: log', 'D: empty'] (jsd: 0.091, count: 106)
+		Divergent actions: ['up']
+		Rwd. dist:	[      -1.0       -1.0     -6.128*      -1.0 ]
+		Val. dist:	[   4744.49   4585.412     4849.7*  4653.989 ]
+	84-['L: empty', 'R: car', 'U: car', 'D: empty'] (jsd: 0.062, count: 86)
+		Divergent actions: ['up']
+		Rwd. dist:	[      -1.0     -151.0   -226.926*   -19.182 ]
+		Val. dist:	[  2867.934   2797.567   2951.393*  2893.032 ]
+====================================
+0 contradictory count states found):
+====================================
+15 contradictory goal states found):
+	333-['L: water', 'R: log', 'U: water', 'D: log'] (count: 37)
+	343-['L: water', 'R: log', 'U: log', 'D: water'] (count: 14)
+	345-['L: water', 'R: log', 'U: log', 'D: log'] (count: 43)
+	446-['L: car', 'R: empty', 'U: car', 'D: car'] (count: 16)
+	693-['L: log', 'R: water', 'U: water', 'D: log'] (count: 32)
+	705-['L: log', 'R: water', 'U: log', 'D: log'] (count: 26)
+	765-['L: log', 'R: log', 'U: water', 'D: log'] (count: 31)
+	775-['L: log', 'R: log', 'U: log', 'D: water'] (count: 16)
+	777-['L: log', 'R: log', 'U: log', 'D: log'] (count: 29)
+	1094-['L: out-bounds', 'R: empty', 'U: car', 'D: car'] (count: 16)
+	1097-['L: out-bounds', 'R: empty', 'U: car', 'D: out-bounds'] (count: 26)
+	1100-['L: out-bounds', 'R: empty', 'U: log', 'D: car'] (count: 20)
+	1122-['L: out-bounds', 'R: water', 'U: water', 'D: empty'] (count: 27)
+	1154-['L: out-bounds', 'R: car', 'U: empty', 'D: car'] (count: 12)
+	1206-['L: out-bounds', 'R: log', 'U: log', 'D: empty'] (count: 33)
+====================================
+3 contradictory feature-action associations found):
+	left: lilypad - down
+	right: lilypad - down
+	down: lilypad - down

@@ -1,0 +1,15 @@
+====================================
+10039 total time-steps
+====================================
+5 earlier states found (min. support: 7, max time-step: 4015):
+	614-['L: car', 'R: out-bounds', 'U: empty', 'D: car'] (count: 8, last time-step: 2371)
+	192-['L: empty', 'R: out-bounds', 'U: car', 'D: empty'] (count: 17, last time-step: 2904)
+	185-['L: empty', 'R: out-bounds', 'U: empty', 'D: out-bounds'] (count: 23, last time-step: 2907)
+	194-['L: empty', 'R: out-bounds', 'U: car', 'D: car'] (count: 8, last time-step: 2912)
+	182-['L: empty', 'R: out-bounds', 'U: empty', 'D: car'] (count: 7, last time-step: 3167)
+====================================
+4 earlier state-action pairs found (min. support: 7, max time-step: 4015):
+	185-['L: empty', 'R: out-bounds', 'U: empty', 'D: out-bounds'] - up (count: 9, last time-step: 2907)
+	180-['L: empty', 'R: out-bounds', 'U: empty', 'D: empty'] - up (count: 18, last time-step: 3168)
+	14-['L: empty', 'R: empty', 'U: car', 'D: car'] - down (count: 10, last time-step: 3693)
+	432-['L: car', 'R: empty', 'U: empty', 'D: empty'] - down (count: 29, last time-step: 3809)

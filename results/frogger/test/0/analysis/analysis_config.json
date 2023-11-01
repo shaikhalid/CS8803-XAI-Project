@@ -1,0 +1,21 @@
+{
+    "action_jsd_threshold": 0.16,
+    "assoc_min_feat_rule_conf": 0.8,
+    "assoc_min_feat_set_jacc": 0.4,
+    "certain_exec_max_disp": 0.1,
+    "certain_trans_max_disp": 0.03,
+    "freq_min_state_count": 15000,
+    "infreq_max_state_count": 150,
+    "max_time_step": 0.4,
+    "min_count": 7,
+    "min_feat_set_count": 15000,
+    "no_assoc_max_feat_set_jacc": 0.0001,
+    "pred_error_outlier_stds": 2.0,
+    "py/object": "interestingness_xrl.scenarios.configurations.AnalysisConfiguration",
+    "rwd_outlier_stds": 2.5,
+    "trans_min_states": 5,
+    "uncertain_exec_min_disp": 0.85,
+    "uncertain_trans_min_disp": 0.9,
+    "val_diff_var_outlier_stds": 2,
+    "value_outlier_stds": 2
+}

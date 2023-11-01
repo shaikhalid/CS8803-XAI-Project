@@ -1,0 +1,81 @@
+{
+    "action_max_time_step": 0.4,
+    "agent": null,
+    "config": null,
+    "earlier_actions": [
+        {
+            "py/tuple": [
+                185,
+                2,
+                2907,
+                9
+            ]
+        },
+        {
+            "py/tuple": [
+                180,
+                2,
+                3168,
+                18
+            ]
+        },
+        {
+            "py/tuple": [
+                14,
+                3,
+                3693,
+                10
+            ]
+        },
+        {
+            "py/tuple": [
+                432,
+                3,
+                3809,
+                29
+            ]
+        }
+    ],
+    "earlier_states": [
+        {
+            "py/tuple": [
+                614,
+                2371,
+                8
+            ]
+        },
+        {
+            "py/tuple": [
+                192,
+                2904,
+                17
+            ]
+        },
+        {
+            "py/tuple": [
+                185,
+                2907,
+                23
+            ]
+        },
+        {
+            "py/tuple": [
+                194,
+                2912,
+                8
+            ]
+        },
+        {
+            "py/tuple": [
+                182,
+                3167,
+                7
+            ]
+        }
+    ],
+    "helper": null,
+    "min_state_count": 7,
+    "py/object": "interestingness_xrl.explainability.analysis.interaction.recency.RecencyAnalysis",
+    "state_max_time_step": 0.4,
+    "total_time_steps": 10039
+}
