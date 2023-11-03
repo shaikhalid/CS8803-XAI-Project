@@ -30,7 +30,9 @@ class PongConfiguration(EnvironmentConfiguration):
         :param float initial_q_value: the value used to initialize the q-function.
         """
         # Assuming a simplified state representation for Pong (this can be adjusted)
-        num_states = 6  # e.g., position of ball, velocity of ball, position of paddles
+        # element = ball, computer_paddle, backstop, out-of-bounds
+        # directions = up and down
+        num_states = 4**2  
 
         super().__init__(name, num_states, actions, rewards, gym_env_id, max_steps_per_episode, num_episodes,
                          num_recorded_videos, seed, max_temp, min_temp, discount, learn_rate, initial_q_value)

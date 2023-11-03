@@ -52,17 +52,17 @@ def run_trial(args):
             else EnvironmentConfiguration.load_json(config_file)
         print(config)
 
-    # # creates env helper
-    # helper = create_helper(config)
+    # creates env helper
+    helper = create_helper(config)
 
-    # # checks for provided output dir
-    # output_dir = args.output if args.output is not None else get_agent_output_dir(config, agent_t, args.trial)
-    # if not exists(output_dir):
-    #     makedirs(output_dir)
+    # checks for provided output dir
+    output_dir = args.output if args.output is not None else get_agent_output_dir(config, agent_t, args.trial)
+    if not exists(output_dir):
+        makedirs(output_dir)
 
-    # # saves / copies configs to file
-    # config.save_json(join(output_dir, 'config.json'))
-    # helper.save_state_features(join(output_dir, 'state_features.csv'))
+    # saves / copies configs to file
+    config.save_json(join(output_dir, 'config.json'))
+    helper.save_state_features(join(output_dir, 'state_features.csv'))
 
     # # register environment in Gym according to env config
     # # env_id = '{}-{}-v0'.format(config.gym_env_id, args.trial)

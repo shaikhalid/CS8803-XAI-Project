@@ -511,7 +511,7 @@ class FroggerHelper(ScenarioHelper):
         header[0] = 'state'
         for i in range(len(DIRS)):
             header[i + 1] = 'element {}'.format(DIRS[i])
-
+    
         # saves table
         df = pd.DataFrame(data, columns=header)
         df.to_csv(out_file, delimiter, index=False)

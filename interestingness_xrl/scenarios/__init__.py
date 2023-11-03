@@ -6,7 +6,9 @@ from interestingness_xrl.learning.explorations import ExpDecaySoftMax, SoftMaxEx
     ExplorationStrategy
 from interestingness_xrl.learning.agents import QLearningAgent, QValueBasedAgent, RandomAgent
 from interestingness_xrl.scenarios.frogger.configurations import *
+from interestingness_xrl.scenarios.pong.configurations import *
 from interestingness_xrl.scenarios.frogger.scenario_helper import FroggerHelper
+from interestingness_xrl.scenarios.pong.scenario_helper import PongHelper
 from interestingness_xrl.explainability.explanation.heatmaps import HeatmapsExplainer
 from interestingness_xrl.explainability.explanation.highlights import HighlightsExplainer
 from interestingness_xrl.explainability.explanation.sequences import SequencesExplainer
@@ -113,6 +115,9 @@ def create_helper(config, sound=False):
     """
     if isinstance(config, FroggerConfiguration):
         return FroggerHelper(config, sound=sound)
+
+    if isinstance(config, PongConfiguration):
+        return PongHelper(config)
 
 
 def create_agent(helper, agent_t, rng):
