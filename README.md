@@ -59,7 +59,7 @@ The following examples concern the default Frogger environment. All configuratio
 
 Train an agent for 100 trials via Q-learning using all available CPU cores:
 ```bash
-python -m interestingness_xrl.bin.multi_agent_runner -a 0 -t 100
+python3 -m interestingness_xrl.bin.multi_agent_runner -a 0 -t 100
 ```
 
 Test an agent for 1 trial (default = 2,000 episodes) and record some videos:

@@ -121,6 +121,7 @@ def run_trial(args):
             s = helper.get_state_from_observation(obs, r, done)
             r = helper.get_reward(old_s, a, r, s, done)
             #print reward if its greater than 0
+            #print("State", s)
             if r > 0:
                 print(r)
 

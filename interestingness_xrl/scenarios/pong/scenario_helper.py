@@ -29,6 +29,10 @@ ELEM_LABELS = {EMPTY_IDX: 'empty',
 DIRS = ['up', 'down']
 SHORT_DIRS = ['U', 'D']
 
+MAX_POINTS = 21
+MIN_Y_POS = 14
+MAX_Y_POS = 76
+
 class PongHelper(ScenarioHelper):
     """
     Represents a set of helper methods for learning and analysis of the Pong game environment.
@@ -58,15 +62,11 @@ class PongHelper(ScenarioHelper):
         return obs.flatten()
 
     def get_agent_cell_location(self, obs):
-        print(obs)
         # Assuming the agent's location is represented by its paddle's position in the observation
-        paddle_y_position = np.where(obs == '1')[0][0]  # Replace 'PADDLE_VALUE' with the actual value representing the paddle in the observation
-        return paddle_y_position
+        self.get_coordinate_of_elements(obs)['player_pos']
 
     def get_cell_coordinates(self, col, row):
         return col * self.config.cell_size[0], MIN_Y_POS + row * self.config.cell_size[1]
-    
- 
         
     def get_coordinate_of_elements(self, obs):
         elem_pos ={ 'player_pos': None, 'ball_pos': None, 'computer_pos': None}
@@ -85,15 +85,14 @@ class PongHelper(ScenarioHelper):
             for col3 in range(1, obs.shape[1]-2, 3):
                 # Check if at least one grid has exactly 4 pixel values greater than 87
                 # and the border elements of the 4x4 matrix should only consist of 87
-                if np.sum(obs[row3:row3+3, col3:col3+3] > 87) >= 3 and \
-                   np.all(obs[row3:row3+5, col3-2] == 87) and \
-                   np.all(obs[row3:row3+5, col3+4] == 87) and \
-                   np.all(obs[row3-2, col3:col3+5] == 87) and \
-                   np.all(obs[row3+4, col3:col3+5] == 87):
+                #    np.all(obs[row3:row3+5, col3-2] == 87) and \
+                #   np.all(obs[row3:row3+5, col3+4] == 87) and \
+                if np.sum(obs[row3:row3+3, col3:col3+3] > 87) >= 4 and \
+                   np.all(obs[row3-2, col3:col3+3] == 87) and \
+                   np.all(obs[row3+4, col3:col3+3] == 87):
                     # Store the center pixel as ball coordinate
                     elem_pos['ball_pos'] = row3+1, col3+1
                     break
-        print(elem_pos)
         return elem_pos
 
         
@@ -115,33 +114,54 @@ class PongHelper(ScenarioHelper):
         obs_vec = [EMPTY_IDX, EMPTY_IDX]
 
         #get the postion of the ball
-        self.get_coordinate_of_elements(obs)['ball_pos']
-        # print("coor", ball_y, ball_x)
-        time.sleep(0.5)
+        elem_coords =  self.get_coordinate_of_elements(obs)
+        #check if none of the elements are none
+        if None not in elem_coords.values():
+           
+            #get the postion of the ball
+            ball_y, ball_x = elem_coords['ball_pos']
+            #get the postion of the player paddle
+            player_y, player_x = elem_coords['player_pos']
+            #get the postion of the computer paddle
+            computer_y, computer_x = elem_coords['computer_pos']
 
-        # # calculate the slope of the line between the prev postion of the ball and the current position of the ball
-        # if self.previous_ball_pos is not None and self.previous_ball_pos != (ball_y, ball_x):
-        #     if ball_x - self.previous_ball_pos[1] != 0:
-        #         slope = (ball_y - self.previous_ball_pos[0]) / (ball_x - self.previous_ball_pos[1])
-        #         #if slope if postive make the obs_vec curresponding to up 1
-        #         if slope > 0:
-        #             obs_vec[0] = BALL_IDX
-        #         #if slope is negative make the obs_vec curresponding to down 1
-        #         elif slope < 0:
-        #             obs_vec[1] = BALL_IDX
-        #     else:
-        #         # handle division by zero
-        #         if ball_y > self.previous_ball_pos[0]:
-        #             obs_vec[0] = BALL_IDX
-        #         elif ball_y < self.previous_ball_pos[0]:
-        #             obs_vec[1] = BALL_IDX
-
-        # self.previous_ball_pos = ball_y, ball_x
-        
-   
-        
+            #calculate the slope of ball wrt to its previous position
+            if self.previous_ball_pos is not None\
+                and self.previous_ball_pos != (ball_y, ball_x)\
+                and ball_x > self.previous_ball_pos[1]\
+                and ball_x < player_x:
+                if ball_x - self.previous_ball_pos[1] != 0 and ball_x - player_x != 0:
+                    #calculate the slope between the ball and the player paddle considering ball as the origin
+                    theta1 = -(ball_y - player_y) / (ball_x - player_x)
+                    #calculate the slope between the ball and its previous position
+                    theta2 = -(ball_y - self.previous_ball_pos[0]) / (ball_x - self.previous_ball_pos[1])
+                    #print(theta1, theta2)
+                    #print(ball_y, ball_x, player_y, player_x)
+                    #if theta1>0 and theta2<0 then set the obs_vec corresponding to down 1
+                    if theta1 > 0 and theta2 < 0:
+                        obs_vec[1] = BALL_IDX
+                        print("down 1")
+                    if theta1 < 0 and theta2 > 0:
+                        obs_vec[0] = BALL_IDX
+                        print("up 1")
+                    if theta1 > 0 and theta2 > 0:
+                        if abs(theta1) - abs(theta2) < 0:
+                            obs_vec[0] = BALL_IDX
+                            print("up 2")
+                        elif abs(theta1) - abs(theta2) > 0 :
+                            obs_vec[1] = BALL_IDX
+                            print("down 2")
+                    if theta1 < 0 and theta2 < 0:
+                        if abs(theta1) - abs(theta2) < 0:
+                            obs_vec[1] = BALL_IDX
+                            print("down 3")
+                        elif abs(theta1) - abs(theta2) > 0 :
+                            obs_vec[0] = BALL_IDX
+                            print("up 3")
+            self.previous_ball_pos = (ball_y, ball_x)
+        #print(obs_vec)
+        time.sleep(0.3)
         return obs_vec
-
 
     #need to add win state
     def get_state_from_observation(self, obs, rwd, done):

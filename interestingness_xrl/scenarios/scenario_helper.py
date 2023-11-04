@@ -92,7 +92,7 @@ class ScenarioHelper(object):
             return self.get_terminal_state()
 
         obs_vec = self.get_features_from_observation(obs)
-        print(obs_vec)
+        #print(obs_vec)
         feats_nbins = self.get_features_bins()
 
         # gets discretized index
