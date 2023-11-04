@@ -1,9 +1,12 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import pygame
+import pandas as pd
+from interestingness_xrl.learning import get_discretized_index
 from interestingness_xrl.scenarios.configurations import EnvironmentConfiguration
 from interestingness_xrl.scenarios.scenario_helper import ScenarioHelper, TIME_STEPS_VAR, ANY_FEATURE_IDX
-
 from interestingness_xrl.util import print_line
+import time
 
     # ball: The ball that the players are trying to hit.
     # player_paddle: The paddle that the player controls.
@@ -34,6 +37,7 @@ class PongHelper(ScenarioHelper):
     def __init__(self, config, img_format='png'):
         super().__init__(config, )
         self.img_format = img_format
+        self.previous_ball_pos = None
         #self.sound = sound
 
     
@@ -54,7 +58,6 @@ class PongHelper(ScenarioHelper):
         return obs.flatten()
 
     def get_agent_cell_location(self, obs):
-        print(">>>>>obs")
         print(obs)
         # Assuming the agent's location is represented by its paddle's position in the observation
         paddle_y_position = np.where(obs == '1')[0][0]  # Replace 'PADDLE_VALUE' with the actual value representing the paddle in the observation
@@ -62,39 +65,88 @@ class PongHelper(ScenarioHelper):
 
     def get_cell_coordinates(self, col, row):
         return col * self.config.cell_size[0], MIN_Y_POS + row * self.config.cell_size[1]
-    def get_features_from_observation(self, obs, agent_x=-1, agent_y=-1):
-        """
-        Transforms the given observation of the Pong environment into a set of discretized state features.
-        :param np.ndarray obs: the observation matrix / game state provided to the agent.
-        :param int agent_x: the X location of the agent's paddle in the environment. If -1, it has to be collected from the observation.
-        :param int agent_y: the Y location of the agent's paddle in the environment. If -1, it has to be collected from the observation.
-        :return array: an array containing the discretized state features.
-        """
+    
+ 
+        
+    def get_coordinate_of_elements(self, obs):
+        elem_pos ={ 'player_pos': None, 'ball_pos': None, 'computer_pos': None}
+        for row1 in range(14, 73, 5):
 
-        # Pong specific feature extraction
-        player_paddle_pos = obs[0]  # Assuming the player's paddle position is the first element
-        opponent_paddle_pos = obs[1]  # Assuming the opponent's paddle position is the second element
-        ball_x_pos = obs[2]  # Assuming the ball's x position is the third element
-        ball_y_pos = obs[3]  # Assuming the ball's y position is the fourth element
-        ball_x_velocity = obs[4]  # Assuming the ball's x velocity is the fifth element
-        ball_y_velocity = obs[5]  # Assuming the ball's y velocity is the sixth element
+            if np.sum(obs[row1:row1+5, 72:75] > 87) >= 5:
+                # Store the center pixel as player paddle coordinate
+                elem_pos['player_pos'] = row1+2, 73
 
-        # Discretize the features if necessary, for example:
-        # - Paddle positions could be discretized into 'top', 'middle', 'bottom'.
-        # - Ball position could be discretized into different areas of the screen.
-        # - Ball velocity could be discretized into 'moving left', 'stationary', 'moving right' and similar for y velocity.
+        for row2 in range(14, 73, 5):
+            if np.sum(obs[row2:row2+5, 8:11] > 87) >= 5:
+                # Store the center pixel as player paddle coordinate
+                elem_pos['computer_pos'] = row2+2, 9
 
-        # For simplicity, let's assume the observation is already discretized and just map them to the feature vector
-        obs_vec = [
-            player_paddle_pos,  # Discretized player paddle position
-            opponent_paddle_pos,  # Discretized opponent paddle position
-            ball_x_pos,  # Discretized ball x position
-            ball_y_pos,  # Discretized ball y position
-            ball_x_velocity,  # Discretized ball x velocity
-            ball_y_velocity  # Discretized ball y velocity
-        ]
+        for row3 in range(14, 75, 3):
+            for col3 in range(1, obs.shape[1]-2, 3):
+                # Check if at least one grid has exactly 4 pixel values greater than 87
+                # and the border elements of the 4x4 matrix should only consist of 87
+                if np.sum(obs[row3:row3+3, col3:col3+3] > 87) >= 3 and \
+                   np.all(obs[row3:row3+5, col3-2] == 87) and \
+                   np.all(obs[row3:row3+5, col3+4] == 87) and \
+                   np.all(obs[row3-2, col3:col3+5] == 87) and \
+                   np.all(obs[row3+4, col3:col3+5] == 87):
+                    # Store the center pixel as ball coordinate
+                    elem_pos['ball_pos'] = row3+1, col3+1
+                    break
+        print(elem_pos)
+        return elem_pos
 
+        
+        
+    def get_features_from_observation(self, obs, feats_nbins=[5, 5]):
+        # Take the last frame of the stack for now
+        obs = obs[-1]
+
+        with open('obs.txt', 'w') as file:
+            # Iterate over the array and write each sub-array to the file on a new line
+            for sub_array in obs:
+                # Iterate through each 'row' of the sub-array
+               
+                row_str = ' '.join(map(str, sub_array))
+                file.write(row_str + '\n')
+              
+                # Get the paddle's y-coordinate, idk if I need this for now
+        #paddle_y, paddle_x = self.get_paddle_coordinate(obs)
+        obs_vec = [EMPTY_IDX, EMPTY_IDX]
+
+        #get the postion of the ball
+        self.get_coordinate_of_elements(obs)['ball_pos']
+        # print("coor", ball_y, ball_x)
+        time.sleep(0.5)
+
+        # # calculate the slope of the line between the prev postion of the ball and the current position of the ball
+        # if self.previous_ball_pos is not None and self.previous_ball_pos != (ball_y, ball_x):
+        #     if ball_x - self.previous_ball_pos[1] != 0:
+        #         slope = (ball_y - self.previous_ball_pos[0]) / (ball_x - self.previous_ball_pos[1])
+        #         #if slope if postive make the obs_vec curresponding to up 1
+        #         if slope > 0:
+        #             obs_vec[0] = BALL_IDX
+        #         #if slope is negative make the obs_vec curresponding to down 1
+        #         elif slope < 0:
+        #             obs_vec[1] = BALL_IDX
+        #     else:
+        #         # handle division by zero
+        #         if ball_y > self.previous_ball_pos[0]:
+        #             obs_vec[0] = BALL_IDX
+        #         elif ball_y < self.previous_ball_pos[0]:
+        #             obs_vec[1] = BALL_IDX
+
+        # self.previous_ball_pos = ball_y, ball_x
+        
+   
+        
         return obs_vec
+
+
+    #need to add win state
+    def get_state_from_observation(self, obs, rwd, done):
+        #return self.win_state if self.is_win_state(obs, rwd) else super().get_state_from_observation(obs, rwd, done)
+        return super().get_state_from_observation(obs, rwd, done)
 
     def get_features_bins(self):
         #ignoring any feature, wall, computer paddel and player paddle itself, since they cannot be next to the main paddle
@@ -125,9 +177,8 @@ class PongHelper(ScenarioHelper):
         }
         return feature_labels.get(obs_feat_val, "Unknown")
 
-    def get_features_labels(self, obs_vec, short=False):
-        # Return a list of labels for the given state features
-        return [self.get_feature_label(idx, val) for idx, val in enumerate(obs_vec)]
+    def get_feature_label(self, obs_feat_idx, obs_feat_val):
+        return ELEM_LABELS[obs_feat_val]
 
     def print_features(self, obs_vec, columns=False):
         # Print a description of the given state features
@@ -161,7 +212,6 @@ class PongHelper(ScenarioHelper):
         # Save a description of all states in terms of features to a CSV file
         # Placeholder implementation, adjust as needed
         feats_nbins = self.get_features_bins()
-        print(feats_nbins)
         num_elems = len(ELEM_LABELS) - 1
         num_states = self.config.num_states
         data = [None] * num_states
@@ -171,11 +221,10 @@ class PongHelper(ScenarioHelper):
                 # gets discretized index
                 obs_vec = [u, d]
                 state = get_discretized_index(obs_vec, feats_nbins)
-
                 # puts element names in correct place in table
                 data[state] = [state,
-                                self.get_feature_label(2, u),
-                                self.get_feature_label(3, d)]
+                                self.get_feature_label(0, u),
+                                self.get_feature_label(1, d)]
 
         header = [''] * (1+len(DIRS))
         header[0] = 'state'

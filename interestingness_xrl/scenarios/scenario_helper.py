@@ -92,9 +92,11 @@ class ScenarioHelper(object):
             return self.get_terminal_state()
 
         obs_vec = self.get_features_from_observation(obs)
+        print(obs_vec)
         feats_nbins = self.get_features_bins()
 
         # gets discretized index
+        #print(">>>", obs_vec, feats_nbins)
         return get_discretized_index(obs_vec, feats_nbins)
 
     def get_state_from_features(self, obs_vec):

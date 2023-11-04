@@ -35,7 +35,7 @@ def run_trial(args):
 
         # tries to load config from provided results dir path
         results_dir = args.results if args.results is not None else \
-            get_agent_output_dir(DEFAULT_CONFIG, AgentType.Learning)
+            get_agent_output_dir(PONG_CONFIG, AgentType.Learning)
         config_file = join(results_dir, 'config.json')
         print(config_file)
         if not exists(results_dir) or not exists(config_file):
@@ -73,74 +73,79 @@ def run_trial(args):
     env = wrap_deepmind(config.gym_env_id, frame_stack=4,
                          episode_life=False, clip_rewards=False)
     # # todo
-    # config.num_episodes = 100
-    # video_callable = video_schedule(config, args.record)
-    # env = Monitor(env, directory=output_dir, force=True, video_callable=video_callable)
+    config.num_episodes = 100
+    video_callable = video_schedule(config, args.record)
+    env = Monitor(env, directory=output_dir, force=True, video_callable=video_callable)
 
-    # # adds reference to monitor to allow for gym environments to update video frames
-    # if video_callable(0):
-    #     env.env.monitor = env
+    # adds reference to monitor to allow for gym environments to update video frames
+    if video_callable(0):
+        env.env.monitor = env
 
-    # # initialize seeds (one for the environment, another for the agent)
-    # env.seed(config.seed + args.trial)
-    # agent_rng = np.random.RandomState(config.seed + args.trial)
+    # initialize seeds (one for the environment, another for the agent)
+    env.seed(config.seed + args.trial)
+    agent_rng = np.random.RandomState(config.seed + args.trial)
 
-    # # creates the agent
-    # agent, exploration_strategy = create_agent(helper, agent_t, agent_rng)
+    # creates the agent
+    agent, exploration_strategy = create_agent(helper, agent_t, agent_rng)
 
-    # # if testing, loads tables from file (some will be filled by the agent during the interaction)
-    # if agent_t == AgentType.Testing:
-    #     agent.load(results_dir, )
+    # if testing, loads tables from file (some will be filled by the agent during the interaction)
+    if agent_t == AgentType.Testing:
+        agent.load(results_dir, )
 
-    # # runs episodes
-    # behavior_tracker = BehaviorTracker(config.num_episodes)
-    # recorded_episodes = []
-    # for e in range(config.num_episodes):
+    # runs episodes
+    behavior_tracker = BehaviorTracker(config.num_episodes)
+    recorded_episodes = []
+    for e in range(config.num_episodes):
 
-    #     # checks whether to activate video monitoring
-    #     env.env.monitor = env if video_callable(e) else None
+        # checks whether to activate video monitoring
+        #env.env.monitor = env if video_callable(e) else None
+        env.env.monitor = env
 
-    #     # reset environment
-    #     old_obs = env.reset()
-    #     old_s = helper.get_state_from_observation(old_obs, 0, False)
+        # reset environment
+        old_obs = env.reset()
+        old_s = helper.get_state_from_observation(old_obs, 0, False)
+        print(">>>>",old_s)
 
-    #     if args.verbose:
-    #         helper.update_stats_episode(e)
-    #     exploration_strategy.update(e)
+        # if args.verbose:
+        #     helper.update_stats_episode(e)
+        exploration_strategy.update(e)
 
-    #     t = 0
-    #     done = False
-    #     while not done:
-    #         # select action
-    #         a = agent.act(old_s)
+        t = 0
+        done = False
+        while not done:
+            # select action
+            a = agent.act(old_s)
 
-    #         # observe transition
-    #         obs, r, done, _ = env.step(a)
-    #         s = helper.get_state_from_observation(obs, r, done)
-    #         r = helper.get_reward(old_s, a, r, s, done)
+            # observe transition
+            obs, r, done, _ = env.step(a)
+            s = helper.get_state_from_observation(obs, r, done)
+            r = helper.get_reward(old_s, a, r, s, done)
+            #print reward if its greater than 0
+            if r > 0:
+                print(r)
 
-    #         # update agent and stats
-    #         agent.update(old_s, a, r, s)
-    #         behavior_tracker.add_sample(old_s, a)
-    #         helper.update_stats(e, t, old_obs, obs, old_s, a, r, s)
+            # update agent and stats
+            agent.update(old_s, a, r, s)
+            behavior_tracker.add_sample(old_s, a)
+            #helper.update_stats(e, t, old_obs, obs, old_s, a, r, s)
 
-    #         old_s = s
-    #         old_obs = obs
-    #         t += 1
+            old_s = s
+            old_obs = obs
+            t += 1
 
-    #     # adds to recorded episodes list
-    #     if video_callable(e):
-    #         recorded_episodes.append(e)
+        # adds to recorded episodes list
+        if video_callable(e):
+            recorded_episodes.append(e)
 
-    #     # signals new episode to tracker
-    #     behavior_tracker.new_episode()
+        # signals new episode to tracker
+        behavior_tracker.new_episode()
 
-    # # writes results to files
-    # agent.save(output_dir)
-    # behavior_tracker.save(output_dir)
-    # write_table_csv(recorded_episodes, join(output_dir, 'rec_episodes.csv'))
-    # helper.save_stats(join(output_dir, 'results'), CLEAR_RESULTS)
-    # print('\nResults of trial {} written to:\n\t\'{}\''.format(args.trial, output_dir))
+    # writes results to files
+    agent.save(output_dir)
+    behavior_tracker.save(output_dir)
+    write_table_csv(recorded_episodes, join(output_dir, 'rec_episodes.csv'))
+    #helper.save_stats(join(output_dir, 'results'), CLEAR_RESULTS)
+    print('\nResults of trial {} written to:\n\t\'{}\''.format(args.trial, output_dir))
 
     env.close()
 

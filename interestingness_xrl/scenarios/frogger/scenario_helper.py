@@ -491,7 +491,7 @@ class FroggerHelper(ScenarioHelper):
         num_elems = len(ELEM_LABELS) - 1
         num_states = self.config.num_states
         data = [None] * num_states
-
+        print(feats_nbins, num_states)
         for l in range(num_elems):
             for r in range(num_elems):
                 for u in range(num_elems):
