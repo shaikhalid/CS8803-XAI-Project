@@ -32,7 +32,7 @@ class PongConfiguration(EnvironmentConfiguration):
         # Assuming a simplified state representation for Pong (this can be adjusted)
         # element = ball, computer_paddle, backstop, out-of-bounds
         # directions = up and down
-        num_states = 5**2  
+        num_states = 2**2  
 
         super().__init__(name, num_states, actions, rewards, gym_env_id, max_steps_per_episode, num_episodes,
                          num_recorded_videos, seed, max_temp, min_temp, discount, learn_rate, initial_q_value)
@@ -49,7 +49,7 @@ PONG_CONFIG = PongConfiguration(
     ]),
     rewards={
         'score_point': 5000.,  # Reward for scoring a point
-        'lose_point': -200.    # Penalty for losing a point
+        'lose_point': -5000.    # Penalty for losing a point
     },
     gym_env_id=GAME_GYM_ID,
     max_steps_per_episode=300,
@@ -60,5 +60,5 @@ PONG_CONFIG = PongConfiguration(
     min_temp=0.05,
     discount=.9,
     learn_rate=.3,
-    initial_q_value=0.
+    initial_q_value=5000.
 )

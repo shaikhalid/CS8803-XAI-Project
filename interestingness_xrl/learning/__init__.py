@@ -42,6 +42,7 @@ def get_discretized_index(obs_vec, feats_nbins):
         for j in range(i + 1, len(obs_vec)):
             stride *= feats_nbins[j]
         idx += obs_vec[i] * stride
+    #print(idx, obs_vec, feats_nbins)
     return idx
 
 

@@ -97,7 +97,9 @@ class ScenarioHelper(object):
 
         # gets discretized index
         #print(">>>", obs_vec, feats_nbins)
-        return get_discretized_index(obs_vec, feats_nbins)
+        discretized_index = get_discretized_index(obs_vec, feats_nbins)
+        #print("DI", discretized_index)
+        return discretized_index
 
     def get_state_from_features(self, obs_vec):
         """

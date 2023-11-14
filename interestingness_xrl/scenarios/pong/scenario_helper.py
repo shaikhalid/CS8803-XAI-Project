@@ -22,10 +22,14 @@ OUT_OF_BOUNDS_IDX = 4
 
 ELEM_LABELS = {EMPTY_IDX: 'empty',
                BALL_IDX: 'ball',
-               COMPUTER_PADDLE_IDX: 'computer_paddle',
-               BACKSTOP_IDX: 'backstop',
-               OUT_OF_BOUNDS_IDX: 'out-bounds',
                ANY_FEATURE_IDX: 'any'}
+
+# ELEM_LABELS = {EMPTY_IDX: 'empty',
+#                BALL_IDX: 'ball',
+#                COMPUTER_PADDLE_IDX: 'computer_paddle',
+#                BACKSTOP_IDX: 'backstop',
+#                OUT_OF_BOUNDS_IDX: 'out-bounds',
+#                ANY_FEATURE_IDX: 'any'}
 DIRS = ['up', 'down']
 SHORT_DIRS = ['U', 'D']
 
@@ -72,42 +76,35 @@ class PongHelper(ScenarioHelper):
         elem_pos ={ 'player_pos': None, 'ball_pos': None, 'computer_pos': None}
         for row1 in range(14, 73, 5):
 
-            if np.sum(obs[row1:row1+5, 72:75] > 87) >= 5:
+            if np.sum(obs[row1:row1+5, 72:75] > 87) >= 2:
                 # Store the center pixel as player paddle coordinate
-                elem_pos['player_pos'] = row1+2, 73
+                elem_pos['player_pos'] =  73, 83 - (row1+2)
+                break
 
         for row2 in range(14, 73, 5):
-            if np.sum(obs[row2:row2+5, 8:11] > 87) >= 5:
+            if np.sum(obs[row2:row2+5, 8:11] > 87) >= 2:
                 # Store the center pixel as player paddle coordinate
-                elem_pos['computer_pos'] = row2+2, 9
-
+                elem_pos['computer_pos'] =  9, 83 - (row2+2)
+                break
+        
+        #look for the ball in the empty space between the paddles and the walls
+        # top starts from 14th index and bottom ends at 76th index
+        # left starts from 11th index and right ends at 71nd index
         for row3 in range(14, 75, 3):
-            for col3 in range(1, obs.shape[1]-2, 3):
-                # Check if at least one grid has exactly 4 pixel values greater than 87
-                # and the border elements of the 4x4 matrix should only consist of 87
-                #    np.all(obs[row3:row3+5, col3-2] == 87) and \
-                #   np.all(obs[row3:row3+5, col3+4] == 87) and \
-                if np.sum(obs[row3:row3+3, col3:col3+3] > 87) >= 4 and \
-                   np.all(obs[row3-2, col3:col3+3] == 87) and \
-                   np.all(obs[row3+4, col3:col3+3] == 87):
-                    # Store the center pixel as ball coordinate
-                    elem_pos['ball_pos'] = row3+1, col3+1
+            for col3 in range(11, 70, 3): #69+3 = 71 we take till 70th if we write 71
+                if np.sum(obs[row3:row3+3, col3: col3+3] > 87) >= 1:
+                    elem_pos['ball_pos'] =  col3+1, 83 - (row3+1)
                     break
+        #print(elem_pos)
         return elem_pos
 
         
         
     def get_features_from_observation(self, obs, feats_nbins=[5, 5]):
         # Take the last frame of the stack for now
-        obs = obs[-1]
+        obs = obs[0]
 
-        with open('obs.txt', 'w') as file:
-            # Iterate over the array and write each sub-array to the file on a new line
-            for sub_array in obs:
-                # Iterate through each 'row' of the sub-array
-               
-                row_str = ' '.join(map(str, sub_array))
-                file.write(row_str + '\n')
+        
               
                 # Get the paddle's y-coordinate, idk if I need this for now
         #paddle_y, paddle_x = self.get_paddle_coordinate(obs)
@@ -115,52 +112,75 @@ class PongHelper(ScenarioHelper):
 
         #get the postion of the ball
         elem_coords =  self.get_coordinate_of_elements(obs)
+        #print(elem_coords)
         #check if none of the elements are none
+        if(elem_coords['ball_pos'] == None):
+            with open('obs.txt', 'w') as file:
+            # Iterate over the array and write each sub-array to the file on a new line
+                for sub_array in obs:
+                    # Iterate through each 'row' of the sub-array
+                
+                    row_str = ' '.join(map(str, sub_array))
+                    file.write(row_str + '\n')
         if None not in elem_coords.values():
            
             #get the postion of the ball
-            ball_y, ball_x = elem_coords['ball_pos']
+            ball_x, ball_y = elem_coords['ball_pos']
             #get the postion of the player paddle
-            player_y, player_x = elem_coords['player_pos']
+            player_x, player_y,  = elem_coords['player_pos']
             #get the postion of the computer paddle
-            computer_y, computer_x = elem_coords['computer_pos']
+            computer_x, computer_y= elem_coords['computer_pos']
 
             #calculate the slope of ball wrt to its previous position
             if self.previous_ball_pos is not None\
-                and self.previous_ball_pos != (ball_y, ball_x)\
-                and ball_x > self.previous_ball_pos[1]\
-                and ball_x < player_x:
-                if ball_x - self.previous_ball_pos[1] != 0 and ball_x - player_x != 0:
+                and self.previous_ball_pos != elem_coords['ball_pos']\
+                and ball_x > self.previous_ball_pos[0]:
+                if ball_x - player_x!= 0 :
                     #calculate the slope between the ball and the player paddle considering ball as the origin
-                    theta1 = -(ball_y - player_y) / (ball_x - player_x)
+                    theta1 = (ball_y - player_y) / (ball_x - player_x)
+                else: 
+                    theta1 = 0
+                if ball_x - self.previous_ball_pos[0] != 0:
                     #calculate the slope between the ball and its previous position
-                    theta2 = -(ball_y - self.previous_ball_pos[0]) / (ball_x - self.previous_ball_pos[1])
-                    #print(theta1, theta2)
-                    #print(ball_y, ball_x, player_y, player_x)
-                    #if theta1>0 and theta2<0 then set the obs_vec corresponding to down 1
-                    if theta1 > 0 and theta2 < 0:
-                        obs_vec[1] = BALL_IDX
-                        print("down 1")
-                    if theta1 < 0 and theta2 > 0:
+                    theta2 = (ball_y - self.previous_ball_pos[1]) / (ball_x - self.previous_ball_pos[0])
+                else:
+                    theta2 = 0
+
+                #print(theta1, theta2)
+                #print(ball_y, ball_x, player_y, player_x)
+                #if theta1>0 and theta2<0 then set the obs_vec corresponding to down 1
+                if theta1 == 0:
+                    if theta2 > 0:
                         obs_vec[0] = BALL_IDX
-                        print("up 1")
-                    if theta1 > 0 and theta2 > 0:
-                        if abs(theta1) - abs(theta2) < 0:
-                            obs_vec[0] = BALL_IDX
-                            print("up 2")
-                        elif abs(theta1) - abs(theta2) > 0 :
-                            obs_vec[1] = BALL_IDX
-                            print("down 2")
-                    if theta1 < 0 and theta2 < 0:
-                        if abs(theta1) - abs(theta2) < 0:
-                            obs_vec[1] = BALL_IDX
-                            print("down 3")
-                        elif abs(theta1) - abs(theta2) > 0 :
-                            obs_vec[0] = BALL_IDX
-                            print("up 3")
-            self.previous_ball_pos = (ball_y, ball_x)
-        #print(obs_vec)
-        time.sleep(0.3)
+                    if theta2 < 0:
+                        obs_vec[1] = BALL_IDX
+                if theta2 == 0: # the ball is coming straight
+                    if theta1 > 0:
+                        obs_vec[1] = BALL_IDX
+                    if theta1 < 0:
+                        obs_vec[0] = BALL_IDX
+                if theta1 > 0 and theta2 < 0:
+                    obs_vec[1] = BALL_IDX
+                    #print("down 1")
+                if theta1 < 0 and theta2 > 0:
+                    obs_vec[0] = BALL_IDX
+                    #print("up 1")
+                if theta1 > 0 and theta2 > 0:
+                    if abs(theta1) - abs(theta2) < 0:
+                        obs_vec[0] = BALL_IDX
+                        #print("up 2")
+                    elif abs(theta1) - abs(theta2) > 0 :
+                        obs_vec[1] = BALL_IDX
+                        #print("down 2")
+                if theta1 < 0 and theta2 < 0:
+                    if abs(theta1) - abs(theta2) < 0:
+                        obs_vec[1] = BALL_IDX
+                        #print("down 3")
+                    elif abs(theta1) - abs(theta2) > 0 :
+                        obs_vec[0] = BALL_IDX
+                        #print("up 3")
+            self.previous_ball_pos = (ball_x, ball_y)
+        #time.sleep(0.2)
         return obs_vec
 
     #need to add win state
@@ -250,8 +270,11 @@ class PongHelper(ScenarioHelper):
         header[0] = 'state'
         for i in range(len(DIRS)):
             header[i + 1] = 'element {}'.format(DIRS[i])
-        # saves table
+        #saves table
+        print(data)
+        print(header)
         df = pd.DataFrame(data, columns=header)
+        print(out_file)
         df.to_csv(out_file, delimiter, index=False)
 
     def get_features_image(self, obs_vec):

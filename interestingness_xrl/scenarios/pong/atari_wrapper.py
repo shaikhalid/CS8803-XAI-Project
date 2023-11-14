@@ -210,8 +210,8 @@ def wrap_deepmind(env_id, episode_life=True, clip_rewards=True,
     :return: the wrapped atari environment.
     """
     assert 'NoFrameskip' in env_id
-    env = gym.make(env_id, render_mode='human')
-    #env = gym.make(env_id)
+    #env = gym.make(env_id, render_mode='human')
+    env = gym.make(env_id)
     env = NoopResetEnv(env, noop_max=30)
     env = MaxAndSkipEnv(env, skip=4)
     if episode_life:
