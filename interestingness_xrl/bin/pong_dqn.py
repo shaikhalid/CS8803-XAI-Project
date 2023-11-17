@@ -10,6 +10,7 @@ from tianshou.env import SubprocVectorEnv
 from interestingness_xrl.bin.net.discrete_net import DQN
 from tianshou.trainer import offpolicy_trainer
 from tianshou.data import Collector, ReplayBuffer
+from interestingness_xrl.bin.custom_collector import CustomCollector
 from interestingness_xrl.scenarios.pong.atari_wrapper import wrap_deepmind, InverseReward
 from interestingness_xrl.scenarios import DEFAULT_CONFIG, create_helper, AgentType, get_agent_output_dir, create_agent
 from interestingness_xrl.scenarios.configurations import EnvironmentConfiguration
@@ -133,8 +134,8 @@ def test_dqn(args=get_args()):
         print("Loaded agent from: ", args.resume_path)
     buffer = ReplayBuffer(args.buffer_size, ignore_obs_next=True)
     # collector
-    train_collector = Collector(policy, train_envs, buffer)
-    test_collector = Collector(policy, test_envs)
+    train_collector = CustomCollector(helper, policy, train_envs, buffer)
+    test_collector = CustomCollector(helper, policy, test_envs)
     # log
     log_path = os.path.join(args.logdir, args.task, 'dqn')
     writer = SummaryWriter(log_path)
