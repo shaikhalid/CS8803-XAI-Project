@@ -1,0 +1,26 @@
+cloudpickle==3.0.0
+contourpy==1.1.1
+cycler==0.12.1
+fonttools==4.43.1
+-e git+https://github.com/pedrodbs/frogger.git@c0ec5a85975dd893f33b43ad13f35723bff3fda0#egg=frogger
+gym==0.22.0
+gym-notices==0.0.8
+importlib-metadata==6.8.0
+importlib-resources==6.1.0
+jsonpickle==3.0.2
+kiwisolver==1.4.5
+matplotlib==3.4.3
+packaging==23.2
+palettable==3.3.3
+pandas==1.3.5
+Pillow==10.1.0
+ple @ git+https://github.com/ntasfi/PyGame-Learning-Environment@3dbe79dc0c35559bb441b9359948aabf9bb3d331
+pyfpgrowth==1.0
+pygame==2.5.2
+pyparsing==3.1.1
+python-dateutil==2.8.2
+pytz==2023.3.post1
+scipy==1.10.1
+six==1.16.0
+tzdata==2023.3
+zipp==3.17.0

@@ -22,6 +22,8 @@ CLEAR_RESULTS = True
 
 def video_schedule(config, videos):
     # linear capture schedule
+    print(int(config.num_episodes))
+
     return lambda e: videos and \
                      (e == config.num_episodes - 1 or e % int(config.num_episodes / config.num_recorded_videos) == 0)
 

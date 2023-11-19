@@ -41,20 +41,17 @@ PONG_CONFIG = PongConfiguration(
     name='pong',
     actions=OrderedDict([
         ('noop', 0),
-        ('fire', 1),
-        ('right', 2),
-        ('left', 3),
-        ('rightfire', 4),
-        ('leftfire', 5)
+        ('up', 1),
+        ('down', 2),
     ]),
     rewards={
         'score_point': 5000.,  # Reward for scoring a point
         'lose_point': -5000.    # Penalty for losing a point
     },
     gym_env_id=GAME_GYM_ID,
-    max_steps_per_episode=300,
-    num_episodes=2000,
-    num_recorded_videos=10,
+    max_steps_per_episode=6000,
+    num_episodes=4,
+    num_recorded_videos=2,
     seed=0,
     max_temp=20,
     min_temp=0.05,
@@ -62,3 +59,4 @@ PONG_CONFIG = PongConfiguration(
     learn_rate=.3,
     initial_q_value=5000.
 )
+

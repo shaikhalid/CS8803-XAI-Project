@@ -176,6 +176,7 @@ class TransitionValuesAnalysis(AnalysisBase):
             # tests if state was found to be a local minimum or maximum and gets weighted avg of next state values
             # only if agent tested all actions a state can be a minimum/maximum
             if local_minimum and num_actions == self.agent.num_actions:
+                print(self.agent.num_actions)
                 next_val_avg = np.sum(ns_val * (c_sa / float(c_s)) for c_sa, ns_val in next_val_avg_minimums).item()
                 self.local_minima_states.append((s, v_s, next_val_avg, c_s))
 

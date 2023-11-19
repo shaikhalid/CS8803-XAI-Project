@@ -195,8 +195,8 @@ class FrameStack(gym.Wrapper):
         # the original wrapper use `LazyFrames` but since we use np buffer,
         # it has no effect
         return np.stack(self.frames, axis=0)
-
-
+    
+    
 def wrap_deepmind(env_id, episode_life=True, clip_rewards=True,
                   frame_stack=4, scale=False, warp_frame=True):
     """Configure environment for DeepMind-style Atari. The observation is

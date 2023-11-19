@@ -93,7 +93,7 @@ class SequenceAnalysis(AnalysisBase):
         # source_states.update([x[0] for x in self.transition_analysis.uncertain_trans])
         # source_states.update([x[0] for x in self.transition_analysis.certain_trans])
         # source_states.update([x[0] for x in self.recency_analysis.earlier_states])
-        source_states.add(self.helper.get_terminal_state())
+        # source_states.add(self.helper.get_terminal_state())
 
         target_states = set([x[0] for x in self.transition_value_analysis.local_maxima_states])
 
@@ -111,6 +111,7 @@ class SequenceAnalysis(AnalysisBase):
         for s in source_states:
 
             # first executes most likely action and gets next state
+           #print(s, self.agent.c_sa)
             a = int(np.argmax(self.agent.c_sa[s]))
             ns = int(np.argmax(self.agent.c_sas[s][a]))
 

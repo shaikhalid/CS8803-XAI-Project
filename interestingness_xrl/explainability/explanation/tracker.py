@@ -89,7 +89,8 @@ class AspectsTrackerExplainer(Explainer):
                 x, y = self.helper.get_cell_coordinates(col, row)
 
                 # gets state from observation in desired location
-                obs_vec = self.helper.get_features_from_observation(obs, x, y)
+                #obs_vec = self.helper.get_features_from_observation(obs, x, y)
+                obs_vec = self.helper.get_features_from_observation(obs)
                 s = get_discretized_index(obs_vec, self.feats_nbins)
 
                 # for each interesting aspect found for this state (location)

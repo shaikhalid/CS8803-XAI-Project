@@ -26,6 +26,25 @@ def video_schedule(config, videos):
     return lambda e: videos and \
                      (e == config.num_episodes - 1 or e % int(config.num_episodes / config.num_recorded_videos) == 0)
 
+def get_current_state(env):
+        ram = env.ale.getRAM()  # get emulator RAM state
+        cpu_score = ram[13]  # computer/ai opponent score 
+        player_score = ram[14]  # your score
+        cpu_paddle_y = ram[21]  # Y coordinate of computer paddle
+        player_paddle_y = ram[51]  # Y coordinate of your paddle
+        ball_x = ram[49]  # X coordinate of ball
+        ball_y = ram[54] # Y coordinate of ball
+        
+        return({
+            "cpu_score": cpu_score,
+            "player_score": player_score,
+            "cpu_paddle_y": cpu_paddle_y,
+            "player_paddle_y": player_paddle_y,
+            "ball_x": ball_x,
+            "ball_y": ball_y
+        })
+
+
 
 def run_trial(args):
     # tries to get agent type
@@ -73,7 +92,6 @@ def run_trial(args):
     env = wrap_deepmind(config.gym_env_id, frame_stack=4,
                          episode_life=False, clip_rewards=False)
     # # todo
-    config.num_episodes = 100
     video_callable = video_schedule(config, args.record)
     env = Monitor(env, directory=output_dir, force=True, video_callable=video_callable)
 
@@ -95,19 +113,18 @@ def run_trial(args):
     # runs episodes
     behavior_tracker = BehaviorTracker(config.num_episodes)
     recorded_episodes = []
+    print(config.num_episodes)
     for e in range(config.num_episodes):
 
         # checks whether to activate video monitoring
-        #env.env.monitor = env if video_callable(e) else None
-        env.env.monitor = env
-
+        env.env.monitor = env if video_callable(e) else None
+       
         # reset environment
         old_obs = env.reset()
         old_s = helper.get_state_from_observation(old_obs, 0, False)
-        print(">>>>",old_s)
 
-        # if args.verbose:
-        #     helper.update_stats_episode(e)
+        if args.verbose:
+            helper.update_stats_episode(e)
         exploration_strategy.update(e)
 
         t = 0
@@ -126,9 +143,11 @@ def run_trial(args):
                 print(r)
 
             # update agent and stats
+            
             agent.update(old_s, a, r, s)
             behavior_tracker.add_sample(old_s, a)
-            #helper.update_stats(e, t, old_obs, obs, old_s, a, r, s)
+            game_state = get_current_state(env)
+            helper.update_stats(e, t, old_obs, obs, old_s, a, r, s, game_state)
 
             old_s = s
             old_obs = obs
@@ -145,7 +164,7 @@ def run_trial(args):
     agent.save(output_dir)
     behavior_tracker.save(output_dir)
     write_table_csv(recorded_episodes, join(output_dir, 'rec_episodes.csv'))
-    #helper.save_stats(join(output_dir, 'results'), CLEAR_RESULTS)
+    helper.save_stats(join(output_dir, 'results'), CLEAR_RESULTS)
     print('\nResults of trial {} written to:\n\t\'{}\''.format(args.trial, output_dir))
 
     env.close()

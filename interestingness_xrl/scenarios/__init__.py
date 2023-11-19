@@ -23,7 +23,7 @@ MAX_BETWEEN_STATES = 50  # number of allowed non-sequence states between 2 state
 # DEFAULT_CONFIG = FROGGER_CONFIG
 # DEFAULT_CONFIG = FROGGER_LIMITED_CONFIG
 # DEFAULT_CONFIG = FROGGER_HIGH_VISION_CONFIG
-DEFAULT_CONFIG = FROGGER_CONFIG
+DEFAULT_CONFIG = PONG_CONFIG
 # DEFAULT_CONFIG = FAST_FROGGER_CONFIG
 
 ANALYSIS_CONFIGS = {
@@ -219,6 +219,10 @@ def get_analysis_config(config):
     """
     if isinstance(config, FroggerConfiguration):
         return FROGGER_ANALYSIS_CONFIG
+    
+    if isinstance(config, PongConfiguration):
+        return FROGGER_ANALYSIS_CONFIG
+
 
     return None
 

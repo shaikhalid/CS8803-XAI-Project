@@ -59,13 +59,13 @@ def run_episodes(name, new_episode_func, update_func):
             r = helper.get_reward(old_s, a, r, s, done)
 
             # checks possible synchronization errors
-            if done and t != seq_len - 1:
-                raise ValueError(
-                    'Environment ended at {}, before tracked behavior which ended at: {}'.format(t, seq_len - 1))
-            if t == seq_len - 1 and not done:
-                raise ValueError('Environment did not end at {} like it was supposed to'.format(t))
-            if not done and s != s_seq[t + 1]:
-                raise ValueError('Environment state {} does not match tracked state {}'.format(s, s_seq[t + 1]))
+            # if done and t != seq_len - 1:
+            #     raise ValueError(
+            #         'Environment ended at {}, before tracked behavior which ended at: {}'.format(t, seq_len - 1))
+            # if t == seq_len - 1 and not done:
+            #     raise ValueError('Environment did not end at {} like it was supposed to'.format(t))
+            # if not done and s != s_seq[t + 1]:
+            #     raise ValueError('Environment state {} does not match tracked state {}'.format(s, s_seq[t + 1]))
 
             if name == 'analysis' and explanation_t == ReportType.Heatmaps:
                 helper.update_stats(e, t, old_obs, obs, old_s, a, r, s)
@@ -134,10 +134,10 @@ if __name__ == '__main__':
 
     # register environment in Gym according to env config
     env_id = '{}-report-v0'.format(config.gym_env_id)
-    helper.register_gym_environment(env_id, False, 0, False)
+    #helper.register_gym_environment(env_id, False, 0, False)
 
     # create environment
-    env = gym.make(env_id)
+    env = gym.make(config.gym_env_id)
 
     # initializes seed
     env.seed(config.seed)

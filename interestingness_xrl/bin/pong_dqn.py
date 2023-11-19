@@ -134,6 +134,7 @@ def test_dqn(args=get_args()):
         print("Loaded agent from: ", args.resume_path)
     buffer = ReplayBuffer(args.buffer_size, ignore_obs_next=True)
     # collector
+    print("Creating collector ...")
     train_collector = CustomCollector(helper, policy, train_envs, buffer)
     test_collector = CustomCollector(helper, policy, test_envs)
     # log

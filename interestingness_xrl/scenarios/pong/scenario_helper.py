@@ -7,6 +7,8 @@ from interestingness_xrl.scenarios.configurations import EnvironmentConfiguratio
 from interestingness_xrl.scenarios.scenario_helper import ScenarioHelper, TIME_STEPS_VAR, ANY_FEATURE_IDX
 from interestingness_xrl.util import print_line
 import time
+import os
+from os.path import join
 
     # ball: The ball that the players are trying to hit.
     # player_paddle: The paddle that the player controls.
@@ -36,6 +38,23 @@ SHORT_DIRS = ['U', 'D']
 MAX_POINTS = 21
 MIN_Y_POS = 14
 MAX_Y_POS = 76
+
+CPU_SCORE = 'cpu_score'
+PLAYER_SCORE = 'player_score'
+CPU_PADDLE_Y = 'cpu_paddle_y'
+PLAYER_PADDLE_Y = 'player_paddle_y'
+BALL_X = 'ball_x'
+BALL_Y = 'ball_y'
+
+
+
+def clean_console():
+    """
+    Cleans the system's console using the 'cls' or 'clear' command.
+    :return:
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 class PongHelper(ScenarioHelper):
     """
@@ -205,17 +224,19 @@ class PongHelper(ScenarioHelper):
         return False
 
     def get_observation_dissimilarity(self, obs1, obs2):
-        # returns difference of points
-        return min(1., abs(obs1[2] - obs2[2]) / MAX_POINTS)
+        return np.linalg.norm(obs1 - obs2)
+        # Return a dissimilarity measure between the given observations
+        # Placeholder implementation, adjust as needed
+        # the difference between the observations (4, ) should be scaled between 0 and 1
+    
+        
 
-    def get_feature_label(self, obs_feat_idx, obs_feat_val):
+    def get_features_labels(self, obs_vec, short=False):
         # Return a label for the given feature based on its index and value
-        feature_labels = {
-            0: "Empty",
-            1: "Ball",
-            2: "Paddle"
-        }
-        return feature_labels.get(obs_feat_val, "Unknown")
+        feat_labels = [''] * len(obs_vec)
+        for i in range(len(DIRS)):
+            feat_labels[i] = '{}: {}'.format(SHORT_DIRS[i] if short else DIRS[i], self.get_feature_label(i, obs_vec[i]))
+        return feat_labels
 
     def get_feature_label(self, obs_feat_idx, obs_feat_val):
         return ELEM_LABELS[obs_feat_val]
@@ -285,6 +306,39 @@ class PongHelper(ScenarioHelper):
         # Draw features on the surface based on obs_vec
         # ...
         return surface
+    
+    def update_stats(self, e, t, obs, n_obs, s, a, r, ns, game_state=None):
+        super().update_stats(e, t, obs, n_obs, s, a, r, ns)
+        
+        self.stats_collector.add_sample(CPU_SCORE, e, game_state['cpu_score'])
+        self.stats_collector.add_sample(PLAYER_SCORE, e, game_state['player_score'])
+        self.stats_collector.add_sample(CPU_PADDLE_Y, e, game_state['cpu_paddle_y'])
+        self.stats_collector.add_sample(PLAYER_PADDLE_Y, e, game_state['player_paddle_y'])
+        self.stats_collector.add_sample(BALL_X, e, game_state['ball_x'])
+        self.stats_collector.add_sample(BALL_Y, e, game_state['ball_y'])
+    
+    def update_stats_episode(self, e, path=None):
+        if (e + 1) % (self.config.num_episodes / 100) == 0:
+            clean_console()
+            print('Episode {} ({:.0f}%)...'.format(e + 1, ((e + 1) / self.config.num_episodes) * 100))
+            #self._print_stats(e, PRINT_SCREEN_VAR_NAMES)
+
+    def save_stats(self, path, clear=True, img_format='pdf'):
+        super().save_stats(path, clear)
+
+        # collects and prints final stats to file
+        e = self.config.num_episodes
+        with open(join(path, 'results.log'), 'w') as file:
+            print_line('\nStats (avg. of {} episodes):'.format(e), file)
+            var_names = list(self.stats_collector.all_variables())
+            var_names.sort()
+            self._print_stats(e, var_names, file)
+
+      
+
+           
+
+       
 
 
     @staticmethod

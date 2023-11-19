@@ -83,3 +83,7 @@ Options for the `-r` parameter above (report type) include:
 - `2`: **Heatmaps**, which produces images based on agent location frequencies, observation, feature frequencies, game stats means and elements frequencies.
 - `3`: **Tracker**, producing several videos, each visually-tracking (attention map) the different interestingness elements on the environment.
 
+## issues
+ 1. We dont have terminal, because terminal comes from the score. If the score of any of the agent is 21 then it end. But we are not considering the score in the featureset
+ 
+

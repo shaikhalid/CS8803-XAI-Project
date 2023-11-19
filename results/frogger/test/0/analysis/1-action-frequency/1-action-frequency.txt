@@ -1,6 +1,6 @@
 ====================================
 Coverage of the state-action space (for visited states): 81.65%
-Mean dispersion of the execution of actions in visited states: 0.690 Â± 0.308 (count: 94)
+Mean dispersion of the execution of actions in visited states: 0.690 ± 0.308 (count: 94)
 ====================================
 0 certain states found (max. dispersion: 0.1):
 ====================================
