@@ -23,8 +23,8 @@ By combining multimedia elements, including videos and images, with participant 
 
 The generated explanations show that the number of interestingness highlights/moments is consistently more for environments where the Opponent is making adversarial attacks. The interestingness explanations was able to highlight an avg of 40% of adversarial attacks.
 
-![Image 1](findings/attack_highlights.png)
-![Image 2](findings/interestingness_compare.png)
+![Image 1](attack_highlights.png)
+![Image 2](interestingness_compare.png)
 
 ## References
 1. [InterestingnessXRL](https://github.com/SRI-AIC/InterestingnessXRL)
