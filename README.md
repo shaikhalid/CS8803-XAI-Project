@@ -1,4 +1,5 @@
-# CS 8803 Explainable AI Project - Prof. Sonia Chernova
+# I See You 
+## CS 8803 Explainable AI Project - Prof. Sonia Chernova
 
 ## Motivation:
 
